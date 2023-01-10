@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/hello.css">
+    <link rel="stylesheet" href="css/carte.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <title>BS - Vélo</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="parent">
+                <div class="logo">
+                    <img src="images/logo.svg" alt="mon logo" />
+                </div>
+                <div class="link">
+                    <a href="#">Accueil |</a>
+                    <a href="#">stations |</a>
+                    <a href="#">avis |</a>
+                    <a href="#">Contact |</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="section_carte">
+        <h1>Mon titre principal</h1>
+        <div class="parent_carte">
+            <div class="carte">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod quis ducimus optio minima error aliquid soluta labore quo vel? Autem recusandae cumque repellat optio fugit dolorum, perspiciatis repudiandae tempore rerum.
+            </div>
+            <div class="infos_station">
+                fgdgfdgdgd
+            </div>
+        </div>
+    </section>
+    <section class="section_form">        
+        <div class="parent_carte">            
+            <div class="formulaire">
+                <h1>Titre formulaire</h1>
+                <hr>
+                <p>&nbsp</p>
+                <form action="verif.php" method="post">
+                    <label for="pseudo">Pseudo : </label>
+                    <input type="text" name="pseudo" id="pseudo" size="50" value="" required> <br><br>
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" rows="7" cols="50" required></textarea> <br><br>
+                    <input type="submit" value="Envoyer">
+                </form>
+            </div>
+            <div class="avis">
+                <h1>Avis</h1>
+                <hr>
+                <p>&nbsp</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas possimus fugiat dicta provident harum vitae, quos atque hic voluptatibus tempora eum quisquam. Aut quo fugit quisquam doloribus quia molestias sit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas possimus fugiat dicta provident harum vitae, quos atque hic voluptatibus tempora eum quisquam. Aut quo fugit quisquam doloribus quia molestias sit.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <div class="contact_form">
+            <h1>Formulaire de contact</h1>
+            <form action="verif_contact.php" method="post">
+
+                <label for="fname">Nom</label>
+                <input type="text" id="fname" name="firstname" placeholder="Votre Nom.." required>
+            
+                <label for="lname">Prénom</label>
+                <input type="text" id="lname" name="lastname" placeholder="Votre prénom.." required>
+            
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" name="email" placeholder="Votre mail.." required>
+            
+                <label for="subject">Commentaire</label>
+                <textarea id="subject" name="subject" placeholder="Votre commentaire.." required></textarea>
+            
+                <br><br>
+                <input type="submit" value="Submit">
+            
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="parent_footer">
+            <div class="f_logo">
+                <img src="images/logo.svg" alt="mon logo" />
+            </div>
+            <div class="f_menu">
+
+            </div>
+            <div class="f_social">
+                <img src="images/social/facebook.png" alt="facebook" />
+                <img src="images/social/instagram.png" alt="instagram" />
+                <img src="images/social/linkedin.png" alt="linkedin" />
+                <img src="images/social/pay-pal.png" alt="pay-pal" />
+                <img src="images/social/twitter.png" alt="twitter" />
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script src="js/script.js"></script>
+</html>
