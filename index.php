@@ -1,8 +1,8 @@
-<?php
+<!-- <?php
     require('class/MyPdoLocal.php');
     $pdo = new MyPDO();
     $data_avis = $pdo -> reqFetchAll("SELECT * FROM avis");    
-?>
+?>  -->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -50,7 +50,15 @@
     <section class="section_carte" id="section_carte">
         <div class="parent_carte">
             <div class="carte">
-                <h1>Carte de Lyon</h1>
+                <h1>Carte de <span id="city-title">Lyon</span></h1>
+                <select name="cities" id="city-select">
+                    <option value="">--Choisir la ville--</option>
+                    <option value="Lyon">Lyon</option>
+                    <option value="Marseille">Marseille</option>
+                    <option value="Toulouse">Toulouse</option>
+                    <option value="Amiens">Amiens</option>
+                    <option value="Nantes">Nantes</option>
+                </select>
                 <div id="map"></div>
             </div>
             <div class="infos_station">
@@ -77,7 +85,7 @@
                 <h1>Avis</h1>
                 <hr>
                 <p>&nbsp</p>
-                <?php 
+                <!-- <?php 
                     foreach($data_avis as $data) {
                         echo "<p>Pseudo : " .$data->pseudo. "</p>";
                         echo "<p>Avis : " .$data->avis. "</p>";
@@ -88,7 +96,7 @@
                         </form>";
                         echo "<hr>";
                     }
-                ?>                
+                ?>                 -->
             </div>
         </div>
     </section>

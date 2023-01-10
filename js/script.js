@@ -1,8 +1,4 @@
-infos = document.querySelector(".infos_api");
-infos.innerHTML = '<p>Passez la souris sur le marqueur</p><br><p>Double-cliquez pour zoomer</p>';
-infos.style.fontStyle = "italic";
-
-
+// Find a city in API
 async function fetchContract(city) {
     const r = await fetch('https://api.jcdecaux.com/vls/v1/stations?contract=' + city + '&apiKey=5e9c3981d2ee8d12af4b168731fe489035682eaf', {
         //formaliser une requete http
@@ -17,7 +13,7 @@ async function fetchContract(city) {
     throw new Error('Impossible de contacter le serveur');
 }
 
-
+// Display markers for each station of the selected city
 function displayStations(city) {
 
     let velo_icon1 = L.icon({
@@ -34,25 +30,23 @@ function displayStations(city) {
         popupAnchor: [16, -50]
     });
 
-    let map = L.map('map');
     fetchContract(city).then(function (datas) {
 
-        console.log(datas);
         map.setView([datas[0].position.lat, datas[0].position.lng], 13);
         for (let i = 0; i < datas.length; i++) {
 
             let marker = L.marker([datas[i].position.lat, datas[i].position.lng], { icon: datas[i].available_bike_stands > 0 ? velo_icon1 : velo_icon2 }).on('mouseover', () => {
-                infos.innerHTML =
-                    `<p style='font-weight:bold; color:#FFE013'>${datas[i].name}</p>` +
+                infosElt.innerHTML =
+                    `<p id="station">${datas[i].name}</p>` +
                     `<p><span>Addresse</span> :${datas[i].address}</p>` +
                     `<p><span>Statut</span> : ${datas[i].status}</p>` +
                     `<p><span>Vélo disponibles au stand</span> : ${datas[i].available_bike_stands}</p>` +
                     `<p><span>Capacité du stand</span> :${datas[i].bike_stands}</p>`
-                infos.style.fontStyle = "normal";
+                infosElt.style.fontStyle = "normal";
             })
             marker.on('mouseout', () => {
-                infos.innerHTML = '<p>Passez la souris sur le marqueur</p><br><p>Double-cliquez pour zoomer</p>';
-                infos.style.fontStyle = "italic";
+                infosElt.innerHTML = '<p>Passez la souris sur le marqueur</p><br><p>Double-cliquez pour zoomer</p>';
+                infosElt.style.fontStyle = "italic";
             })
             marker.addTo(map);
         }
@@ -64,6 +58,24 @@ function displayStations(city) {
 }
 
 
+// ================== SELECTIONS DOM ELEMENTS =============
+
+let infosElt = document.querySelector(".infos_api");
+infosElt.innerHTML = '<p>Passez la souris sur le marqueur</p><br><p>Double-cliquez pour zoomer</p>';
+infosElt.style.fontStyle = "italic";
+let citiesElt = document.getElementById("city-select");
+let titleElt = document.getElementById("city-title");
+
+
+// ================ EVENT LISTENERS ========================
+
+citiesElt.addEventListener('change', (e) => {
+    e.preventDefault();
+    city = citiesElt.options[citiesElt.selectedIndex].value
+    titleElt.innerHTML = city;
+    displayStations(city);
+})
 
 let city = "Lyon";
+let map = L.map('map');
 displayStations(city);
