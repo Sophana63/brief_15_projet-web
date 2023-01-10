@@ -1,3 +1,8 @@
+<?php
+    require('class/MyPdoLocal.php');
+    $pdo = new MyPDO();
+    $data_avis = $pdo -> reqFetchAll("SELECT * FROM avis");    
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,9 +14,18 @@
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <title>BS - Vélo</title>
 </head>
 <body>
+    <!-- Back to top button -->
+<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top" >
+<i class="fas fa-arrow-up"></i>
+</button>
     <header>
         <nav class="navbar">
             <div class="parent">
@@ -20,25 +34,28 @@
                 </div>
                 <div class="link">
                     <a href="#">Accueil |</a>
-                    <a href="#">stations |</a>
-                    <a href="#">avis |</a>
-                    <a href="#">Contact |</a>
+                    <a href="#section_carte">stations |</a>
+                    <a href="#section_form">avis |</a>
+                    <a href="#contact">Contact |</a>
                 </div>
             </div>
         </nav>
     </header>
-    <section class="section_carte">
-        <h1>Mon titre principal</h1>
+    <section class="section_carte" id="section_carte">        
         <div class="parent_carte">
             <div class="carte">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod quis ducimus optio minima error aliquid soluta labore quo vel? Autem recusandae cumque repellat optio fugit dolorum, perspiciatis repudiandae tempore rerum.
+                <h1>Carte de Lyon</h1>
+                <div id="map"></div>
             </div>
             <div class="infos_station">
-                fgdgfdgdgd
+                <h1>Info Station</h1>
+                <p>
+
+                </p>
             </div>
         </div>
     </section>
-    <section class="section_form">        
+    <section class="section_form" id="section_form">        
         <div class="parent_carte">            
             <div class="formulaire">
                 <h1>Titre formulaire</h1>
@@ -56,12 +73,22 @@
                 <h1>Avis</h1>
                 <hr>
                 <p>&nbsp</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas possimus fugiat dicta provident harum vitae, quos atque hic voluptatibus tempora eum quisquam. Aut quo fugit quisquam doloribus quia molestias sit.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas possimus fugiat dicta provident harum vitae, quos atque hic voluptatibus tempora eum quisquam. Aut quo fugit quisquam doloribus quia molestias sit.</p>
+                <?php 
+                    foreach($data_avis as $data) {
+                        echo "<p>Pseudo : " .$data->pseudo. "</p>";
+                        echo "<p>Avis : " .$data->avis. "</p>";
+                        echo "<p>Date: " .$data->date. "</p>";
+                        echo "<p><form action='del.php' method='post'>
+                        <input type='hidden' name='num_id' value='" .$data->id. "'>
+                        <input type='submit' value='Supprimer'></p>
+                        </form>";
+                        echo "<hr>";
+                    }
+                ?>                
             </div>
         </div>
     </section>
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="contact_form">
             <h1>Formulaire de contact</h1>
             <form action="verif_contact.php" method="post">
@@ -104,4 +131,7 @@
 </body>
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script src="js/script.js"></script>
+<script src="js/button.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
 </html>
