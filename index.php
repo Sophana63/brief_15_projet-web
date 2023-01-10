@@ -1,3 +1,8 @@
+<?php
+    require('class/MyPdoLocal.php');
+    $pdo = new MyPDO();
+    $data_avis = $pdo -> reqFetchAll("SELECT * FROM avis");    
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -72,6 +77,18 @@
                 <h1>Avis</h1>
                 <hr>
                 <p>&nbsp</p>
+                <?php 
+                    foreach($data_avis as $data) {
+                        echo "<p>Pseudo : " .$data->pseudo. "</p>";
+                        echo "<p>Avis : " .$data->avis. "</p>";
+                        echo "<p>Date: " .$data->date. "</p>";
+                        echo "<p><form action='del.php' method='post'>
+                        <input type='hidden' name='num_id' value='" .$data->id. "'>
+                        <input type='submit' value='Supprimer'></p>
+                        </form>";
+                        echo "<hr>";
+                    }
+                ?>                
             </div>
         </div>
     </section>
