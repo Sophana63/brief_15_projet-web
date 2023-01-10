@@ -7,7 +7,7 @@ class MyPDO {
 	private $connec;
 	private $header;
 
-	public function __construct(string $header = null, $db = 'epiz_33357214_db_brief_15', $login ='epiz_33357214', $pass='ELlO7zZC42CZZx'){
+	public function __construct(string $header = null, $db = 'brief_15', $login ='root', $pass=''){
 		$this->login = $login;
 		$this->pass = $pass;
 		$this->db = $db;
@@ -19,7 +19,7 @@ class MyPDO {
 		try
 		{
 	         $bdd = new PDO(
-                            'mysql:host=sql110.epizy.com;dbname='.$this->db.';charset=utf8mb4', 
+                            'mysql:host=localhost;dbname='.$this->db.';charset=utf8mb4', 
                              $this->login, 
                              $this->pass
                  );

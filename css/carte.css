@@ -1,20 +1,49 @@
+
 .parent_carte {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
 }
 
 .parent_carte .carte {
+    text-align: center;
     width: 45%;
     min-width: 300px;
     margin: 20px;
     padding: 15px;
     border-right: 1px solid #2B4162;
-    font-family: elegance;    
-    
+    font-family: elegance;        
+}
+
+.parent_carte .carte #map {
+    margin: auto;
+    margin-top: 15px;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 .parent_carte .infos_station {
+    margin:0 auto;
+    text-align: center;
+    font-family: elegance, Verdana, Geneva, Tahoma, sans-serif;
+    color: #F5F0F6;
     width: 45%;
     margin: 20px;
+	border-radius: 10px;
+    background-color: #385f71;
+}
+
+.parent_carte .infos_station h1 {
+    margin: 10px;
+}
+
+.infos_station:before, .infos_station:after {
+  content: "";
+  display: table
+}
+
+.infos_station:after {
+  clear: both
 }
