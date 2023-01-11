@@ -85,7 +85,7 @@
                 <h1>Avis</h1>
                 <hr>
                 <p>&nbsp</p>
-                <!-- <?php 
+                <?php 
                     foreach($data_avis as $data) {
                         echo "<p>Pseudo : " .$data->pseudo. "</p>";
                         echo "<p>Avis : " .$data->avis. "</p>";
@@ -96,7 +96,7 @@
                         </form>";
                         echo "<hr>";
                     }
-                ?>                 -->
+                ?>                 
             </div>
         </div>
     </section>
